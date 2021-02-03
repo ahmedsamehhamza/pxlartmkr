@@ -1,11 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<style>
+
+body {
+    text-align: center;
+}
+
+h1 {
+    font-family: Monoton;
+    font-size: 70px;
+    margin: 0.2em;
+}
+
+h2 {
+    margin: 1em 0 0.25em;
+}
+
+h2:first-of-type {
+    margin-top: 0.5em;
+}
+
+table,
+tr,
+td {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+tr {
+    height: 20px;
+}
+
+td {
+    width: 20px;
+}
+
+input[type=number] {
+    width: 6em;
+}
+
+</style>
+
+
     <title>Pixel Art Maker!</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monoton">
-    <link rel="stylesheet" href="styles.css">
+
 </head>
-<body background="img1.png">
+<body background="https://wallpaperplay.com/walls/full/b/1/7/130115.jpg">
     <h1>Pixel Art Maker</h1>
 
     <h2>Choose Grid Size</h2>
@@ -24,8 +71,31 @@
     <table id="pixelCanvas" bgcolor="white"></table>
 
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-    <script src="script.js"></script>
+    <script>
+    $(document).ready(function() {
+     $('#sizePicker').submit(function makeGrid(grid) {
+       $('table tr').remove();
+       var rows = $('#inputHeight').val();
+       var cols = $('#inputWidth').val();
+        for (var i = 1; i <= rows; i++) {
+         $('table').append('<tr></tr>');
+         for (var j = 1; j <= cols; j++) {
+          $('tr:last').append('<td></td>');
+          $('td').attr("class", 'cells');
+    }
+    }
+    grid.preventDefault();
 
+    $('.cells').click(function(event){
+      var paint = $('#colorPicker').val();
+      $(event.target).css('background-color', paint)
+    });
+    });
+    });
 
+    </script>
+
+<p> © Copyrighted To Ahmed Sameh </p>
+  <p> Follow me on : <a href="https://instagram.com/ahmedsamehhamza"> Instagram </a></p> <p><a href="https://twitter.com/ahmedsamehhmza"> Twitter </a>    </p>
 </body>
 </html>
